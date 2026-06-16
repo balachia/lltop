@@ -54,6 +54,11 @@ doesn't expose:
   shown even for *unloaded* models, so `RAM − Size ≈ KV + buffers in RAM`.
 - **Statusline fails closed.** `lltop status` catches everything and prints `llm:-`
   on any error — it must never error out a tmux bar. Keep that contract.
+- **Kitty-protocol opt-out under tmux.** `__init__.py` sets
+  `TEXTUAL_DISABLE_KITTY_KEY=1` when `$TMUX` is set, *before* Textual imports.
+  Textual otherwise requests the kitty keyboard protocol, which re-encodes keys and
+  steals tmux's prefix (you can't split panes). lltop only binds plain keys, so it
+  loses nothing. Don't remove this — and it must stay in `__init__` to beat the import.
 
 ## Testing
 
