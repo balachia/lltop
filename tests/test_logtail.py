@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from llouie.tui.logtail import LogTail
+from lltop.tui.logtail import LogTail
 from textual.app import App, ComposeResult
 
 
@@ -52,12 +52,12 @@ async def test_logtail_respects_maxlen():
 
 
 async def test_logtail_filter_hides_own_requests_but_keeps_buffer():
-    app = _Host(own_marker="llouie")
+    app = _Host(own_marker="lltop")
     async with app.run_test():
         tail = app.query_one("#tail", LogTail)
         tail.toggle_filter()  # turn filtering on
         assert tail.filter_own is True
-        tail.add_raw('[INFO] Request 127.0.0.1 "GET /running" 200 "llouie" 5us')
+        tail.add_raw('[INFO] Request 127.0.0.1 "GET /running" 200 "lltop" 5us')
         tail.add_raw('[INFO] Request 10.0.0.9 "POST /v1/chat" 200 "curl/8" 5us')
         # both buffered (history preserved), but the own request isn't "visible"
         assert len(tail.buffer.lines) == 2
@@ -67,10 +67,10 @@ async def test_logtail_filter_hides_own_requests_but_keeps_buffer():
 
 
 async def test_logtail_toggle_is_retroactive():
-    app = _Host(own_marker="llouie")
+    app = _Host(own_marker="lltop")
     async with app.run_test():
         tail = app.query_one("#tail", LogTail)
-        tail.add_raw('[INFO] "GET /running" "llouie"')
+        tail.add_raw('[INFO] "GET /running" "lltop"')
         tail.add_raw('[INFO] "POST /v1/chat" "curl/8"')
         # filtering off → both visible
         assert sum(tail._visible(ll.raw) for ll in tail.buffer.lines) == 2

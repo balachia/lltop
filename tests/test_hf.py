@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from llouie.hf import parse_hf_ref, resolve_gguf_size_bytes
+from lltop.hf import parse_hf_ref, resolve_gguf_size_bytes
 
 REF = "unsloth/gemma-4-26B-A4B-it-GGUF:UD-Q5_K_XL"
 REPO_DIR = "models--unsloth--gemma-4-26B-A4B-it-GGUF"

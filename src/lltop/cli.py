@@ -1,4 +1,4 @@
-"""llouie entry point: TUI dashboard + statusline output."""
+"""lltop entry point: TUI dashboard + statusline output."""
 
 from __future__ import annotations
 
@@ -20,7 +20,7 @@ from .tui.app import (
 
 
 def _build_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(prog="llouie", description="llama-swap TUI + status")
+    p = argparse.ArgumentParser(prog="lltop", description="llama-swap TUI + status")
     p.add_argument("--url", default=DEFAULT_URL, help="llama-swap base URL")
     p.add_argument("--config", default=DEFAULT_CONFIG, help="llama-swap config.yaml path")
     p.add_argument("--theme", default="ansi-dark", help="Textual theme name")

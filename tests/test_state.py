@@ -5,9 +5,9 @@ from __future__ import annotations
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from llouie.aggregator import ModelStats
-from llouie.client import Model, RunningModel
-from llouie.state import (
+from lltop.aggregator import ModelStats
+from lltop.client import Model, RunningModel
+from lltop.state import (
     LoadObserver,
     ModelView,
     Snapshot,
@@ -195,7 +195,7 @@ def test_eta_none_when_last_seen_naive():
 
 
 def test_eta_uses_loaded_since_when_no_metrics():
-    """Health-probe load: no logged request, but llouie saw it load 1min ago."""
+    """Health-probe load: no logged request, but lltop saw it load 1min ago."""
     loaded_since = _NOW - timedelta(minutes=1)
     assert unload_eta_seconds(600, None, _NOW, loaded_since=loaded_since) == 540
 

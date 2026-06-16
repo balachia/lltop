@@ -4,11 +4,11 @@ from __future__ import annotations
 
 import asyncio
 
-from llouie.aggregator import ModelStats
-from llouie.client import Model, RunningModel
-from llouie.state import Snapshot, build_snapshot
-from llouie.tui.app import DashboardApp, resolved_layout
-from llouie.tui.logtail import LogTail
+from lltop.aggregator import ModelStats
+from lltop.client import Model, RunningModel
+from lltop.state import Snapshot, build_snapshot
+from lltop.tui.app import DashboardApp, resolved_layout
+from lltop.tui.logtail import LogTail
 from textual.widgets import DataTable
 
 

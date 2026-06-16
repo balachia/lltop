@@ -133,7 +133,7 @@ class DashboardApp(App):
 
     async def on_mount(self) -> None:
         self.theme = self._theme_name
-        self.title = "llouie"
+        self.title = "lltop"
         self.sub_title = self._url
         self._apply_layout()
         inv = self.query_one("#inventory", DataTable)

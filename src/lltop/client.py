@@ -8,9 +8,9 @@ from urllib.parse import urlparse
 
 import httpx
 
-# Distinct UA so llouie's own polling traffic is identifiable in llama-swap's
+# Distinct UA so lltop's own polling traffic is identifiable in llama-swap's
 # request log (and thus filterable from the log pane).
-USER_AGENT = "llouie"
+USER_AGENT = "lltop"
 
 
 @dataclass(frozen=True)

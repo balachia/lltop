@@ -13,7 +13,7 @@ class LogTail(RichLog):
     """A RichLog that parses + color-codes llama-swap log lines.
 
     Keeps a parallel LogBuffer (all lines, including filtered ones) so the
-    'filter own requests' toggle can retroactively show/hide llouie's own
+    'filter own requests' toggle can retroactively show/hide lltop's own
     polling traffic without losing history.
     """
 

@@ -9,9 +9,9 @@ from pathlib import Path
 
 import pytest
 
-from llouie.client import LlamaSwapClient
-from llouie.state import gather_snapshot
-from llouie.statusline import status_line
+from lltop.client import LlamaSwapClient
+from lltop.state import gather_snapshot
+from lltop.statusline import status_line
 
 pytestmark = pytest.mark.live
 

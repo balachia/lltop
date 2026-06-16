@@ -4,17 +4,17 @@ Guidance for Claude Code working in this repo.
 
 ## What this is
 
-`llouie` — a TUI dashboard + statusline for monitoring the local **llama-swap** stack
+`lltop` — a TUI dashboard + statusline for monitoring the local **llama-swap** stack
 (the `monst3r` llama-swap host, default `http://localhost:1135`). Python 3.12, managed
-with `uv`. The built-in llama-swap `/ui` is "good not great"; llouie exists for
+with `uv`. The built-in llama-swap `/ui` is "good not great"; lltop exists for
 at-a-glance: installed models, what's loaded, RAM per model, request counts, plus a
 one-line tmux statusline.
 
 ## Commands
 
 ```bash
-uv run llouie                 # TUI dashboard (default subcommand)
-uv run llouie status          # one-line tmux summary; never errors the bar
+uv run lltop                 # TUI dashboard (default subcommand)
+uv run lltop status          # one-line tmux summary; never errors the bar
 uv run pytest                 # unit + smoke tests (live tests excluded by default)
 uv run pytest -m live         # opt-in: hits a real llama-swap on :1135
 uv run ruff check             # lint (line-length 100, py312 target)
@@ -27,7 +27,7 @@ Global flags: `--url` (default `http://localhost:1135`), `--config`
 TUI keys: `r` refresh · `l`/`u` load/unload selected · `f` toggle own-request log
 filter · `v` cycle layout · `q` quit.
 
-`llouie status` output: `llm:idle` / `llm:<model> <ram>` (one loaded) /
+`lltop status` output: `llm:idle` / `llm:<model> <ram>` (one loaded) /
 `llm:N▪ <total_ram>` (several loaded).
 
 ## Architecture
@@ -40,19 +40,19 @@ Two layers, deliberately split for testability:
 - **Thin Textual shell** (smoke-tested via `run_test`): `tui/app` · `tui/rows` ·
   `tui/logtail`. Keep logic out of here — push it down into the data layer.
 
-Entry point: `llouie = llouie.cli:main` (subparser → `tui` default / `status`).
+Entry point: `lltop = lltop.cli:main` (subparser → `tui` default / `status`).
 
 ## Non-obvious design rationale (don't re-derive this)
 
 The genuine value over llama-swap's built-in UI lives in two correlations the server
 doesn't expose:
 
-- **RAM-per-model.** llama-swap does not track child RSS. llouie maps `ps` RSS →
+- **RAM-per-model.** llama-swap does not track child RSS. lltop maps `ps` RSS →
   model by matching the `--port` reported in `/running`. This is the core trick —
   preserve it if you refactor `ps`/`aggregator`.
 - **Size / cost-to-load column.** GGUF bytes resolved from the HF cache (`hf.py`),
   shown even for *unloaded* models, so `RAM − Size ≈ KV + buffers in RAM`.
-- **Statusline fails closed.** `llouie status` catches everything and prints `llm:-`
+- **Statusline fails closed.** `lltop status` catches everything and prints `llm:-`
   on any error — it must never error out a tmux bar. Keep that contract.
 
 ## Testing

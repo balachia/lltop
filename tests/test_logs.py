@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from llouie.logs import LogBuffer, LogLine, level_color, parse_log_line
+from lltop.logs import LogBuffer, LogLine, level_color, parse_log_line
 
 FIXTURES = Path(__file__).parent / "fixtures"
 

@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from llouie.client import Model, RunningModel
-from llouie.state import build_snapshot
-from llouie.statusline import status_line
+from lltop.client import Model, RunningModel
+from lltop.state import build_snapshot
+from lltop.statusline import status_line
 
 
 def _model(name: str) -> Model:

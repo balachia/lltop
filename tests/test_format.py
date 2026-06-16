@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from llouie.format import fmt_count, fmt_rss_kb, fmt_tps, fmt_ttl
+from lltop.format import fmt_count, fmt_rss_kb, fmt_tps, fmt_ttl
 
 
 def test_fmt_rss_kb_gigabytes():

@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from llouie.client import RunningModel
-from llouie.ps import (
+from lltop.client import RunningModel
+from lltop.ps import (
     Proc,
     attribute_rss_to_models,
     extract_port,

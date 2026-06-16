@@ -52,7 +52,7 @@ def unload_eta_seconds(
     that internal timer, so we approximate the last-activity instant as the most
     recent of two signals:
       - the last *logged* request (metrics last_seen), and
-      - when llouie first observed the model loaded (`loaded_since`).
+      - when lltop first observed the model loaded (`loaded_since`).
     The latter rescues the common case where a model was warmed by a health probe
     (not logged) or the metrics ring rolled — without it the request proxy reads
     stale and the ETA looks bogusly overdue.
@@ -78,10 +78,10 @@ def unload_eta_seconds(
 
 
 class LoadObserver:
-    """Records when llouie first saw each model loaded, across refreshes.
+    """Records when lltop first saw each model loaded, across refreshes.
 
     This is the floor that makes ETA estimates survive health-probe loads: even
-    with no logged request, llouie knows the model has been alive at least since
+    with no logged request, lltop knows the model has been alive at least since
     it first observed it loaded. Entries drop when a model unloads.
     """
 

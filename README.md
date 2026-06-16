@@ -1,16 +1,16 @@
-# llouie
+# lltop
 
 A terminal dashboard + tmux statusline for monitoring a local **llama-swap** stack —
 think `htop`, but for your swappable LLMs.
 
 llama-swap ships its own web `/ui`, but it won't tell you the two things you actually
 want when juggling models on one box: **how much RAM each loaded model is really using**,
-and **how expensive each model is to load**. llouie surfaces both.
+and **how expensive each model is to load**. lltop surfaces both.
 
 ## What you get
 
 - **Inventory** of every configured model — installed, loaded, or idle — at a glance.
-- **RAM per loaded model.** llama-swap doesn't track its children's memory; llouie
+- **RAM per loaded model.** llama-swap doesn't track its children's memory; lltop
   correlates process RSS to each model by matching the `--port` it reports in `/running`.
 - **Size / cost-to-load** for *every* model (even unloaded ones), resolved from the GGUF
   files in your Hugging Face cache. Since `RAM − Size ≈ KV + buffers`, you can see what a
@@ -27,16 +27,16 @@ and **how expensive each model is to load**. llouie surfaces both.
 ## Install
 
 ```bash
-uv tool install .        # installs the `llouie` command
+uv tool install .        # installs the `lltop` command
 # or run straight from a clone without installing:
-uv run llouie
+uv run lltop
 ```
 
 ## Usage
 
 ```bash
-llouie            # interactive TUI dashboard
-llouie status     # one-line summary, for a tmux statusline
+lltop            # interactive TUI dashboard
+lltop status     # one-line summary, for a tmux statusline
 ```
 
 Options (both subcommands):
@@ -64,7 +64,7 @@ remaining vs configured idle-TTL, `pinned`, or `?` when the idle clock is uncert
 
 ### tmux statusline
 
-`llouie status` prints one of:
+`lltop status` prints one of:
 
 ```
 llm:idle                  # nothing loaded
@@ -76,7 +76,7 @@ It fails closed — on any error it prints `llm:-` rather than erroring out your
 it into tmux, e.g.:
 
 ```tmux
-set -g status-right '#(llouie status)'
+set -g status-right '#(lltop status)'
 ```
 
 ## Development

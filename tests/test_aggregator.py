@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from llouie.aggregator import ModelStats, rollup
-from llouie.client import ActivityLogEntry
+from lltop.aggregator import ModelStats, rollup
+from lltop.client import ActivityLogEntry
 
 
 def _entry(

@@ -6,7 +6,7 @@ import httpx
 import pytest
 import respx
 
-from llouie.client import (
+from lltop.client import (
     ActivityLogEntry,
     LlamaSwapClient,
     Model,
@@ -167,14 +167,14 @@ async def test_client_uses_short_timeout_by_default():
 
 
 @respx.mock
-async def test_client_sends_llouie_user_agent():
+async def test_client_sends_lltop_user_agent():
     """Own requests must be tagged so the log pane can filter them out."""
     route = respx.get(f"{BASE}/v1/models").mock(
         return_value=httpx.Response(200, json={"data": [], "object": "list"})
     )
     async with LlamaSwapClient(BASE) as client:
         await client.list_models()
-    assert "llouie" in route.calls.last.request.headers["user-agent"]
+    assert "lltop" in route.calls.last.request.headers["user-agent"]
 
 
 # ---- unload ---------------------------------------------------------------

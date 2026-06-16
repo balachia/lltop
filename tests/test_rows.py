@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
 
-from llouie.aggregator import ModelStats
-from llouie.client import Model, RunningModel
-from llouie.state import build_snapshot
-from llouie.tui.rows import inventory_rows, usage_rows
+from lltop.aggregator import ModelStats
+from lltop.client import Model, RunningModel
+from lltop.state import build_snapshot
+from lltop.tui.rows import inventory_rows, usage_rows
 
 _TZ8 = timezone(timedelta(hours=8))
 
@@ -88,7 +88,7 @@ def test_inventory_rows_overdue_eta_shows_question():
 
 
 def test_inventory_rows_loaded_since_rescues_eta():
-    """Stale metrics but llouie saw it load recently → sane countdown, not '?'."""
+    """Stale metrics but lltop saw it load recently → sane countdown, not '?'."""
     snap = build_snapshot(
         [_model("m1")], [_running("m1", 5801)], {"m1": 100}, {"m1": _stats("m1", 1)}, {}
     )
