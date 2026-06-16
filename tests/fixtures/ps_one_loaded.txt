@@ -1,0 +1,2 @@
+ 1767     1 534112 /Users/avashevko/.local/bin/llama-swap -config /Users/avashevko/.config/llama-swap/config.yaml -listen localhost:1135 -watch-config
+87353  1767 9834592 /opt/homebrew/bin/llama-server --port 5802 -c 0 -hf unsloth/gemma-4-E4B-it-GGUF:UD-Q5_K_XL --jinja

@@ -1,0 +1,54 @@
+# Test fixture: llama-swap config with groups + macros/anchors.
+healthCheckTimeout: 120
+
+macros:
+  llama: /opt/homebrew/bin/llama-server
+  ctx: 0
+  default_args: "--jinja"
+  default_ttl: &default_ttl 600
+
+models:
+  "gemma4-e4b":
+    ttl: *default_ttl
+    cmd: |
+      ${llama} --port ${PORT} -c ${ctx}
+      -hf unsloth/gemma-4-E4B-it-GGUF:UD-Q5_K_XL
+      ${default_args}
+  "gemma4-31b":
+    ttl: *default_ttl
+    cmd: |
+      ${llama} --port ${PORT} -c ${ctx}
+      -hf unsloth/gemma-4-31B-it-GGUF:UD-Q5_K_XL
+      ${default_args}
+  "gemma4-26b-a4b":
+    ttl: *default_ttl
+    cmd: |
+      ${llama} --port ${PORT} -c ${ctx}
+      -hf unsloth/gemma-4-26B-A4B-it-GGUF:UD-Q5_K_XL
+      ${default_args}
+  "qwen3-coder-next":
+    ttl: *default_ttl
+    cmd: |
+      ${llama} --port ${PORT} -c ${ctx}
+      -hf unsloth/Qwen3-Coder-Next-GGUF:UD-Q4_K_XL
+      ${default_args}
+  "mistral-medium-3.5":
+    ttl: *default_ttl
+    cmd: |
+      ${llama} --port ${PORT} -c ${ctx}
+      -hf unsloth/Mistral-Medium-3.5-128B-GGUF:UD-Q4_K_XL
+      ${default_args}
+
+groups:
+  "coders":
+    swap: false
+    exclusive: false
+    members:
+      - "gemma4-26b-a4b"
+      - "qwen3-coder-next"
+  "heavy":
+    swap: true
+    exclusive: true
+    members:
+      - "gemma4-31b"
+      - "mistral-medium-3.5"

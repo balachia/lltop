@@ -1,0 +1,23 @@
+# Test fixture: a persistent (pinned) group.
+macros:
+  default_ttl: &default_ttl 600
+
+models:
+  "gemma4-e4b":
+    ttl: *default_ttl
+    cmd: llama-server --port ${PORT}
+  "gemma4-31b":
+    ttl: *default_ttl
+    cmd: llama-server --port ${PORT}
+
+groups:
+  "pinned":
+    persistent: true
+    swap: false
+    exclusive: false
+    members:
+      - "gemma4-e4b"
+  "rotating":
+    swap: true
+    members:
+      - "gemma4-31b"

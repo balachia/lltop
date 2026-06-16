@@ -1,0 +1,1 @@
+ 1767     1 534112 /Users/avashevko/.local/bin/llama-swap -config /Users/avashevko/.config/llama-swap/config.yaml -listen localhost:1135 -watch-config

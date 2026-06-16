@@ -1,0 +1,7 @@
+[INFO] Request 127.0.0.1 "GET /api/version HTTP/1.1" 200 105 "curl/8.7.1" 19.75µs
+[INFO] Request 127.0.0.1 "GET /v1/models HTTP/1.1" 200 1276 "curl/8.7.1" 88.458µs
+[INFO] Loading model gemma4-31b
+[WARN] model gemma4-31b ttl expired, unloading
+[ERROR] upstream returned 500 for gemma4-31b
+llama_model_loader: loaded meta data with 30 key-value pairs
+[DEBUG] slot 1 released

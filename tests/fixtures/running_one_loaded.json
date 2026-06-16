@@ -1,0 +1,1 @@
+{"running":[{"cmd":"/opt/homebrew/bin/llama-server --port 5802 -c 0\n-hf unsloth/gemma-4-E4B-it-GGUF:UD-Q5_K_XL\n--jinja\n","description":"","model":"gemma4-e4b","name":"","proxy":"http://localhost:5802","state":"ready","ttl":600}]}
